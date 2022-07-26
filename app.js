@@ -7,10 +7,11 @@ var methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash');
 
-var dasboardRouter = require('./app/dashboard/router');
-var categoryRouter = require('./app/category/router');
+const dasboardRouter = require('./app/dashboard/router');
+const categoryRouter = require('./app/category/router');
+const nominalRouter = require('./app/nominal/router');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +34,7 @@ app.use('/adminlte', express.static(path.join(__dirname, '/node_modules/admin-lt
 
 app.use('/', dasboardRouter);
 app.use('/category', categoryRouter);
+app.use('/nominal', nominalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
